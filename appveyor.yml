@@ -1,24 +1,32 @@
 # AppVeyor configuration file
 version: 1.0.{build}
 
+# This section specifies the image to use for the build (Ubuntu)
+image: Ubuntu
+
 # This section defines the steps to run in the CI pipeline
 install:
   # Step 1: Checkout the code
   - git clone https://github.com/elara-aerospace/elara-igniter_test_stand
   - cd elara-igniter_test_stand
 
-  # Step 2: Ensure the path to arduino-cli is correct
+  # Step 2: Install Arduino CLI (ensure it's installed)
+  - echo "Installing Arduino CLI..."
+  - sudo apt-get update
+  - sudo apt-get install -y arduino-cli
+
+  # Step 3: Verify Arduino CLI version
   - echo "Verifying Arduino CLI version..."
   - ./bin/arduino-cli version
 
-  # Step 3: Install Arduino Core
+  # Step 4: Install Arduino Core
   - echo "Installing Arduino Core (arduino:avr)..."
   - ./bin/arduino-cli core update-index
   - ./bin/arduino-cli core install arduino:avr
 
 # This section defines the build steps for the project
 build_script:
-  # Step 4: Compile the Arduino Sketch
+  # Step 5: Compile the Arduino Sketch
   - echo "Compiling Arduino sketch..."
   - make compile
 
