@@ -1,5 +1,10 @@
 # Igniter Test Stand Project
 
+[![CircleCI Build status](https://circleci.com/gh/elara-aerospace/elara-igniter_test_stand.svg?style=shield)](https://circleci.com/gh/elara-aerospace/elara-igniter_test_stand)
+[![AppVeyor Build status](https://ci.appveyor.com/api/projects/status/nvklaq95vwa7hkda?svg=true)](https://ci.appveyor.com/project/suriyaa/elara-igniter_test_stand)
+[![CodeFactor](https://www.codefactor.io/repository/github/elara-aerospace/elara-igniter_test_stand/badge)](https://www.codefactor.io/repository/github/elara-aerospace/elara-igniter_test_stand)
+![GitHub repo size](https://img.shields.io/github/repo-size/elara-aerospace/elara-igniter_test_stand)
+
 This project includes a MATLAB script and an Arduino sketch to facilitate communication between MATLAB and an Arduino board for controlling and monitoring the Igniter Test Stand of Elara Aerospace. The project demonstrates hardware control via serial communication.
 
 ## File Structure
