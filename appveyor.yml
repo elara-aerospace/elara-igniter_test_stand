@@ -1,32 +1,24 @@
 # AppVeyor configuration file
 version: 1.0.{build}
 
-# This section specifies the environment where the build will run
-environment:
-  ARDUINO_CLI: ./bin/arduino-cli  # Path to your Arduino CLI tool
-
 # This section defines the steps to run in the CI pipeline
 install:
   # Step 1: Checkout the code
   - git clone https://github.com/elara-aerospace/elara-igniter_test_stand
   - cd elara-igniter_test_stand
 
-  # Step 2: Ensure ARDUINO_CLI is available in the PATH
-  - echo "Adding ARDUINO_CLI to PATH..."
-  - set PATH=%PATH%;%ARDUINO_CLI%
-
-  # Step 3: Verify Arduino CLI Version
+  # Step 2: Ensure the path to arduino-cli is correct
   - echo "Verifying Arduino CLI version..."
-  - %ARDUINO_CLI% version
+  - ./bin/arduino-cli version
 
-  # Step 4: Install Arduino Core
+  # Step 3: Install Arduino Core
   - echo "Installing Arduino Core (arduino:avr)..."
-  - %ARDUINO_CLI% core update-index
-  - %ARDUINO_CLI% core install arduino:avr
+  - ./bin/arduino-cli core update-index
+  - ./bin/arduino-cli core install arduino:avr
 
 # This section defines the build steps for the project
 build_script:
-  # Step 5: Compile the Arduino Sketch
+  # Step 4: Compile the Arduino Sketch
   - echo "Compiling Arduino sketch..."
   - make compile
 
