@@ -62,14 +62,14 @@ Install the necessary platform for your Arduino board:
 ### Arduino Sketch
 
 1. Connect your Arduino board to your computer via USB.
-2. Build and upload the Arduino sketch using the Makefile:
+2. Build and upload the Arduino sketch using the `Makefile`:
    ```bash
    make compile
    make upload
    ```
 
    Alternatively, use Arduino IDE:
-   - Open `Igniter_test_stand 2.ino`.
+   - Open `src.ino`.
    - Select the appropriate board and port.
    - Upload the sketch.
 
@@ -96,5 +96,5 @@ Install the necessary platform for your Arduino board:
 
 ## License
 
-This project is copyrighted.
+Copyright (C) 2024-present Elara Aerospace. All rights reserved.
 
