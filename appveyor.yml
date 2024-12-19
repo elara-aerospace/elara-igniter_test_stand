@@ -10,10 +10,11 @@ install:
   - git clone https://github.com/elara-aerospace/elara-igniter_test_stand
   - cd elara-igniter_test_stand
 
-  # Step 2: Install Arduino CLI (ensure it's installed)
+  # Step 2: Install Arduino CLI (ensure it's installed using snap)
   - echo "Installing Arduino CLI..."
   - sudo apt-get update
-  - sudo apt-get install -y arduino-cli
+  - sudo apt-get install -y snapd  # Install snapd if it's not already installed
+  - sudo snap install arduino-cli  # Install arduino-cli via snap
 
   # Step 3: Verify Arduino CLI version
   - echo "Verifying Arduino CLI version..."
