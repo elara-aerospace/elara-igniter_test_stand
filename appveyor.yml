@@ -8,10 +8,10 @@ environment:
 
 # The main pipeline configuration
 build:
-  version: 1.0.{build}
   platform: x64
   threads: 4
   timeout: 30
+  version: 1.0.{build}
 
 # This section defines the steps to run in the CI pipeline
 install:
