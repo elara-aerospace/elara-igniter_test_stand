@@ -1,2 +1,2 @@
-# elara-igniter_test_stand
+# Igniter Test Stand
 MATLAB Arduino Communication for Igniter Test Stand
