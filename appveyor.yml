@@ -31,8 +31,3 @@ build_script:
 after_build:
   - echo "Build completed successfully!"
 
-# This section defines the deploy steps if needed (not necessary for this example)
-deploy:
-  # You can add deploy scripts here if necessary (e.g., uploading results to an artifact server)
-  - echo "No deploy step defined."
-
