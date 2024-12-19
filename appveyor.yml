@@ -3,8 +3,7 @@ version: 1.0.{build}
 
 # This section specifies the environment where the build will run
 environment:
-  matrix:
-    - ARDUINO_CLI: ./bin/arduino-cli  # Path to your Arduino CLI tool
+  ARDUINO_CLI: ./bin/arduino-cli  # Path to your Arduino CLI tool
 
 # This section defines the steps to run in the CI pipeline
 install:
