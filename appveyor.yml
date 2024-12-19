@@ -6,13 +6,6 @@ environment:
   matrix:
     - ARDUINO_CLI: ./bin/arduino-cli  # Path to your Arduino CLI tool
 
-# The main pipeline configuration
-build:
-  platform: x64
-  threads: 4
-  timeout: 30
-  version: 1.0.{build}
-
 # This section defines the steps to run in the CI pipeline
 install:
   # Step 1: Checkout the code
