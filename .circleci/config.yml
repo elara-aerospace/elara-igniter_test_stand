@@ -1,0 +1,36 @@
+# CircleCI configuration file
+version: 2.1
+
+jobs:
+  test:
+    docker:
+      - image: circleci/python:3.9  # Use a base image with necessary tools
+    steps:
+      # Step 1: Checkout Code
+      - checkout
+
+      # Step 2: Verify Arduino CLI Version
+      - run:
+          name: Verify Arduino CLI Version
+          command: |
+            ./bin/arduino-cli version
+
+      # Step 3: Install Arduino Core
+      - run:
+          name: Install Arduino Core
+          command: |
+            ./bin/arduino-cli core update-index
+            ./bin/arduino-cli core install arduino:avr
+
+      # Step 4: Compile Arduino Sketch
+      - run:
+          name: Compile Arduino Sketch
+          command: |
+            make compile
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - test
+
