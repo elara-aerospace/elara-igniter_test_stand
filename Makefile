@@ -1,26 +1,21 @@
-CC = g++
-CFLAGS = -Wall -Wextra -std=c++11
-INCLUDES = -Iinclude
-SRC_DIR = src
-OBJ_DIR = obj
-BIN_DIR = bin
+# Arduino CLI-specific setup
+ARDUINO_CLI = ./bin/arduino-cli
+BOARD = arduino:avr:uno  # Replace with your board
+PORT = /dev/ttyACM0  # Replace with your port
 
-SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
-OBJECTS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
-EXECUTABLE = $(BIN_DIR)/ignitor_test_stand
+SKETCH = src
 
-all: $(EXECUTABLE)
+# Targets
+all: compile upload
 
-$(EXECUTABLE): $(OBJECTS)
-	@mkdir -p $(BIN_DIR)
-	$(CC) $(OBJECTS) -o $@
+compile:
+	$(ARDUINO_CLI) compile --fqbn $(BOARD) $(SKETCH)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+upload:
+	$(ARDUINO_CLI) upload -p $(PORT) --fqbn $(BOARD) $(SKETCH)
 
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf build
 
-.PHONY: all clean
+.PHONY: all compile upload clean
 

@@ -1,18 +1,36 @@
+# GitHub Actions - C/C++ CI
 name: C/C++ CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
   pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-upload:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: make
-      run: make
-    - name: make clean
-      run: make clean
+    # Step 1: Checkout the code
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    # Step 2: Install Arduino CLI
+    - name: Install Arduino CLI
+      run: |
+        mkdir -p bin
+        curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh -s -- --dest bin
+        ./bin/arduino-cli version
+
+    # Step 3: Install Arduino Core
+    - name: Install Arduino Core
+      run: |
+        ./bin/arduino-cli core update-index
+        ./bin/arduino-cli core install arduino:avr
+
+    # Step 4: Compile Sketch
+    - name: Compile Arduino Sketch
+      run: |
+        make compile
+
